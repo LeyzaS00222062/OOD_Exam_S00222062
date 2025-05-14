@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOD_Exam_S00222062
 {
-    internal class Patient
+    public class Patient
     {
         public int PatientID { get; set; }
 

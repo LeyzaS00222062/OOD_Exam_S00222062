@@ -26,6 +26,7 @@ namespace OOD_Exam_S00222062
             ViewPatientsDetail();
         }
 
+        // Add a new patient to the database
         private async void AddPatientDetails(object sender, RoutedEventArgs e)
         {
             string firstName = firstNameTxtBox.Text;
@@ -55,6 +56,8 @@ namespace OOD_Exam_S00222062
             }
         }
 
+
+        // View all patients in the list box
         private void ViewPatientsDetail()
         {
             using (var db = new PatientData())
@@ -64,6 +67,7 @@ namespace OOD_Exam_S00222062
             }
         }
 
+        // Add a new appointment for the selected patient
         private void AddNewAppointment(object sender, RoutedEventArgs e)
         {
             if (patientListBx.SelectedItem is Patient selectedPatient)

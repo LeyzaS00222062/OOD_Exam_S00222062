@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOD_Exam_S00222062
 {
-    internal class Appointment
+    public class Appointment
     {
         public int AppointmentID { get; set; }
 
