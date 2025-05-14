@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="Appointments" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock Text="Appointment Date" Margin="64,51,636,363" Width="100" Height="20"></TextBlock>
+        <DatePicker x:Name="appointmentDate" Margin="222,48,0,0" Width="30" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+        <TextBlock Text="Appointment Time" Margin="372,50,328,364" Width="100" Height="20"></TextBlock>
+        <DatePicker x:Name="appointmentTime" Margin="522,48,0,0" Width="30" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+        <TextBlock Text="Notes" Height="20" Width="80" Margin="10,89,710,325"></TextBlock>
+        <TextBox x:Name="notesTxtBox" Margin="10,117,0,0" Width="650" Height="300" VerticalAlignment="Top" HorizontalAlignment="Left"></TextBox>
+
+        <Button Content="Add" Click="AddAppointment" Width="60" Height="20" Margin="690,266,10,148"></Button>
+        <Button Content="Update" Click="UpdateAppointment" Width="60" Height="20" Margin="690,295,10,119"></Button>
     </Grid>
 </Window>

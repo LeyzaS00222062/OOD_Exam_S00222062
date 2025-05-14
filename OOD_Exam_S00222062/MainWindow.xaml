@@ -22,7 +22,7 @@
         <TextBlock Text="Appointments" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400,217,0,0"></TextBlock>
         <Grid>
             <TextBlock x:Name="appointmentsTxtBox" Width="300" Height="160" Margin="400,234,200,0"></TextBlock>
-            <Button Content="Add" Click="AddAppointment" Width="60" Height="20" Margin="690,266,10,148"></Button>
+            <Button Content="Add" Click="AddNewAppointment" Width="60" Height="20" Margin="690,266,10,148"></Button>
             <Button Content="Edit" Click="DeleteAppointment" Width="60" Height="20" Margin="690,295,10,119"></Button>
         </Grid>
 
