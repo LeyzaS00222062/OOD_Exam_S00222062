@@ -23,5 +23,47 @@ namespace OOD_Exam_S00222062
         {
             InitializeComponent();
         }
+
+        private void AddAppointment(object sender, RoutedEventArgs e)
+        {
+            string appointmentNotes = notesTxtBox.Text;
+            DateTime newAppointmentTime = appointmentTime.SelectedDate ?? DateTime.Now;
+            DateTime newAppointmentDate = appointmentDate.SelectedDate ?? DateTime.Now;
+            if (string.IsNullOrWhiteSpace(appointmentNotes))
+            {
+                MessageBox.Show("Please enter valid appointment notes.");
+                return;
+            }
+            using (var db = new PatientData())
+            {
+                var appointment = new Appointment
+                {
+                    AppointmentTime = appointmentTime,
+                    AppointmentNotes = appointmentNotes
+                };
+                db.Appointments.Add(appointment);
+                db.SaveChanges();
+                MessageBox.Show("Appointment added successfully.");
+            }
+        }
+
+        private void UpdateAppointment() 
+        {
+            using (var db = new PatientData())
+            {
+                var appointment = db.Appointments.FirstOrDefault(a => a.AppointmentId == appointmentId);
+                if (appointment != null)
+                {
+                    appointment.AppointmentTime = appointmentTime;
+                    appointment.AppointmentNotes = notesTxtBox.Text;
+                    db.SaveChanges();
+                    MessageBox.Show("Appointment updated successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Appointment not found.");
+                }
+            }
+        }
     }
 }

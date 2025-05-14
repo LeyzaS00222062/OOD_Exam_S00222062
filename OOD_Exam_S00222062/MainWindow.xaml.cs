@@ -23,6 +23,62 @@ namespace OOD_Exam_S00222062
         public MainWindow()
         {
             InitializeComponent();
+            ViewPatientsDetail();
         }
+
+        private async void AddPatientDetails(object sender, RoutedEventArgs e)
+        {
+            string firstName = firstNameTxtBox.Text;
+            string surname = surnameTxtBox.Text;
+
+            string phoneNumber = phoneNumberTxtBox.Text;
+            DateTime dob = dobCalender.SelectedDate ?? DateTime.Now;
+
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(surname))
+            {
+                MessageBox.Show("Please enter a valid first name and surname.");
+                return;
+            }
+            
+            using (var db = new PatientData())
+            {
+                var patient = new Patient
+                {
+                    FirstName = firstName,
+                    Surname = surname,
+                    DOB = dob,
+                    ContactNumber = phoneNumber
+                };
+                db.Patients.Add(patient);
+                await db.SaveChangesAsync();
+                MessageBox.Show("Patient details added successfully.");
+            }
+        }
+
+        private void ViewPatientsDetail()
+        {
+            using (var db = new PatientData())
+            {
+                List<Patient> patients = db.Patients.ToList();
+                patientListBx.ItemsSource = patients;
+            }
+        }
+
+        private void AddNewAppointment(object sender, RoutedEventArgs e)
+        {
+            if (patientListBx.SelectedItem is Patient selectedPatient)
+            {
+                AppointmentsWindow appointmentsWindow = new AppointmentsWindow(selectedPatient);
+                appointmentsWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient to add an appointment.");
+            }
+            
+            
+        }
+
+
     }
 }
