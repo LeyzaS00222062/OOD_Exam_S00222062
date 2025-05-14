@@ -13,6 +13,8 @@ namespace OOD_Exam_S00222062
     {
         public DbSet<Patient> Patients { get; set; }
 
+        public DbSet<Appointment> Appointments { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string dbPath = Path.Combine(Directory.GetCurrentDirectory(), "PatientsData.db");

@@ -28,7 +28,6 @@ namespace OOD_Exam_S00222062
         {
             string appointmentNotes = notesTxtBox.Text;
             DateTime newAppointmentTime = appointmentTime.SelectedDate ?? DateTime.Now;
-            DateTime newAppointmentDate = appointmentDate.SelectedDate ?? DateTime.Now;
             if (string.IsNullOrWhiteSpace(appointmentNotes))
             {
                 MessageBox.Show("Please enter valid appointment notes.");
@@ -38,7 +37,7 @@ namespace OOD_Exam_S00222062
             {
                 var appointment = new Appointment
                 {
-                    AppointmentTime = appointmentTime,
+                    AppointmentTime = newAppointmentTime,
                     AppointmentNotes = appointmentNotes
                 };
                 db.Appointments.Add(appointment);
